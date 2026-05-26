@@ -1,7 +1,6 @@
 ---
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
-import { Icon } from "astro-icon/components";
 import { getCategoryList, getSortedPostsList } from "@/utils/content-utils";
 import { url } from "@/utils/url-utils";
 
@@ -32,7 +31,7 @@ const archiveUrl = url("/archive/");
       data-category-name=""
       aria-label={i18n(I18nKey.home)}
     >
-      <Icon name="material-symbols:home" class="text-lg" />
+      <svg width="1em" height="1em" viewBox="0 0 24 24" class="text-lg" aria-hidden="true"><path fill="currentColor" d="M4 21V9l8-6l8 6v12h-6v-7h-4v7z"/></svg>
     </a>
     <a
       href={archiveUrl}
