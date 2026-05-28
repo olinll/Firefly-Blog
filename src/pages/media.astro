@@ -1,0 +1,13 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import MediaApp from "@/components/pages/media/MediaApp.svelte";
+import "@/styles/media.css";
+---
+
+<MainGridLayout title="媒体解析" description="粘贴链接，一键解析下载">
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+      <MediaApp client:only="svelte" />
+    </div>
+  </div>
+</MainGridLayout>
