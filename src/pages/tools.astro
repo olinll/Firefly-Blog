@@ -1,0 +1,33 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+import { toolsConfig } from "@/config/toolsConfig";
+---
+
+<MainGridLayout title="工具箱" description="一些实用小工具">
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative">
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+      <h1 class="text-2xl font-bold mb-6 text-[var(--tw-prose-headings)]">工具箱</h1>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {toolsConfig.map((tool) => (
+          <a
+            href={tool.href}
+            class="group flex items-start gap-4 p-5 rounded-[var(--radius-large)] bg-[var(--license-block-bg)] no-styling hover:bg-[var(--btn-regular-bg-hover)] active:scale-[0.98] transition-all duration-150"
+          >
+            <div class="flex-shrink-0 mt-0.5 text-[var(--primary)]">
+              <Icon name={tool.icon} class="w-8 h-8" />
+            </div>
+            <div class="min-w-0">
+              <div class="font-semibold text-[var(--tw-prose-headings)] group-hover:text-[var(--btn-content)] transition-colors">
+                {tool.title}
+              </div>
+              <div class="text-sm text-[var(--tw-prose-body)] opacity-75 mt-1">
+                {tool.description}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</MainGridLayout>
