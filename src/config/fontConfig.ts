@@ -5,7 +5,7 @@ export const fontConfig = {
 	// 是否预加载字体文件
 	preload: true,
 	// 当前选择的字体，支持多个字体组合
-	selected: ["lxgw-wenkai-medium"],
+	selected: ["noto-sans-sc"],
 
 	// 字体列表
 	// 推荐使用可靠的 CDN 服务商提供的字体链接，它天然做了按需分片加载，且性能较好
@@ -37,6 +37,15 @@ export const fontConfig = {
 			name: "Inter",
 			src: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
 			family: "Inter",
+			display: "swap" as const,
+		},
+
+		// Google Fonts - Noto Sans SC（中文黑体，字重 100-900）
+		"noto-sans-sc": {
+			id: "noto-sans-sc",
+			name: "Noto Sans SC",
+			src: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap",
+			family: "Noto Sans SC",
 			display: "swap" as const,
 		},
 
@@ -76,7 +85,7 @@ export const fontConfig = {
 			name: "LXGW WenKai Medium",
 			src: "https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.css",
 			family: "LXGW WenKai",
-			weight: 500,
+			weight: 700,
 			display: "swap" as const,
 		},
 	},
