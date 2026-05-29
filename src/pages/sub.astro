@@ -1,0 +1,12 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import SubApp from "@/components/pages/sub/SubApp.svelte";
+---
+
+<MainGridLayout title="VLESS → Clash" description="VLESS 链接转 Clash 配置">
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+      <SubApp client:only="svelte" />
+    </div>
+  </div>
+</MainGridLayout>
