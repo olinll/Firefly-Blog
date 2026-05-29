@@ -24,6 +24,8 @@ import I18nKey from "./src/i18n/i18nKey";
 import { pluginLanguageBadge } from "expressive-code-language-badge"; /* Language Badge */
 import { pluginCollapsible } from "expressive-code-collapsible"; /* Collapsible */
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
+import { UrlCardComponent } from "./src/plugins/rehype-component-url-card.mjs";
+import { rehypeUrlMeta } from "./src/plugins/rehype-url-meta.mjs";
 import { rehypeMermaid } from "./src/plugins/rehype-mermaid.mjs";
 import { rehypePlantuml } from "./src/plugins/rehype-plantuml.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
@@ -213,11 +215,13 @@ export default defineConfig({
 			rehypeFigure,
 			[rehypeExternalLinks, { siteUrl: siteConfig.site_url }],
 			[rehypeEmailProtection, { method: "base64" }], // 邮箱保护插件，支持 'base64' 或 'rot13'
+			rehypeUrlMeta,
 			[
 				rehypeComponents,
 				{
 					components: {
 						github: GithubCardComponent,
+						url: UrlCardComponent,
 					},
 				},
 			],
