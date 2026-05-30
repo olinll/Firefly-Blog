@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { templates } from "./templates";
-
   interface VlessParams {
     uuid: string;
     server: string;
@@ -13,13 +11,16 @@
     fingerprint: string;
     security: string;
     spx: string;
+    alpn: string;
+    host: string;
+    path: string;
+    fragment: string;
+    xhttpMode: string;
   }
 
-  let selectedTemplateId = $state(templates[0]?.id || "");
-  let selectedTemplate = $derived(templates.find((t) => t.id === selectedTemplateId) || templates[0]);
-
   let inputText = $state("");
-  let configName = $state("");
+  let nodeName = $state("");
+  let fileName = $state("");
   let error = $state("");
   let result = $state("");
   let parsed: VlessParams | null = $state(null);
@@ -38,35 +39,117 @@
       uuid,
       server: parsed.hostname,
       port: parsed.port || "443",
-      flow: sp.get("flow") || "xtls-rprx-vision",
+      flow: sp.get("flow") || "",
       network: sp.get("type") || "tcp",
       public_key: sp.get("pbk") || "",
       short_id: sp.get("sid") || "",
       servername: sp.get("sni") || parsed.hostname,
       fingerprint: sp.get("fp") || "chrome",
-      security: sp.get("security") || "reality",
+      security: sp.get("security") || "",
       spx: sp.get("spx") || "",
+      alpn: sp.get("alpn") || "",
+      host: sp.get("host") || "",
+      path: sp.get("path") || "",
+      fragment: decodeURIComponent(parsed.hash.slice(1)) || "",
+      xhttpMode: sp.get("mode") || "auto",
     };
   }
 
-  function generateYaml(params: VlessParams, name: string): string {
-    let yaml = selectedTemplate.content;
-    const replacements: Record<string, string> = {
-      "{{name}}": name,
-      "{{server}}": params.server,
-      "{{port}}": params.port,
-      "{{uuid}}": params.uuid,
-      "{{flow}}": params.flow,
-      "{{network}}": params.network,
-      "{{public_key}}": params.public_key,
-      "{{short_id}}": params.short_id,
-      "{{servername}}": params.servername,
-      "{{fingerprint}}": params.fingerprint,
-    };
-    for (const [key, val] of Object.entries(replacements)) {
-      yaml = yaml.replaceAll(key, val);
+  function buildProxy(p: VlessParams, name: string): string {
+    const lines: string[] = [];
+    lines.push(`- name: ${name}`);
+    lines.push(`  type: vless`);
+    lines.push(`  udp: true`);
+    lines.push(`  server: ${p.server}`);
+    lines.push(`  port: ${p.port}`);
+    lines.push(`  uuid: ${p.uuid}`);
+    lines.push(`  encryption: none`);
+
+    if (p.flow) {
+      lines.push(`  flow: ${p.flow}`);
     }
-    return yaml;
+
+    lines.push(`  network: ${p.network}`);
+
+    // TLS / Reality
+    if (p.security === "reality") {
+      lines.push(`  tls: true`);
+      lines.push(`  reality-opts:`);
+      lines.push(`    public-key: ${p.public_key}`);
+      lines.push(`    short-id: ${p.short_id}`);
+    } else {
+      lines.push(`  tls: true`);
+      if (p.alpn) {
+        lines.push(`  tlssettings:`);
+        lines.push(`    alpn:`);
+        for (const a of p.alpn.split(",")) {
+          lines.push(`      - ${a.trim()}`);
+        }
+      }
+    }
+
+    lines.push(`  servername: ${p.servername}`);
+    lines.push(`  client-fingerprint: ${p.fingerprint}`);
+
+    // Transport-specific options
+    if (p.network === "xhttp") {
+      lines.push(`  xhttp-opts:`);
+      lines.push(`    mode: ${p.xhttpMode}`);
+      lines.push(`    path: ${p.path || p.spx || "/"}`);
+    } else if (p.network === "ws") {
+      lines.push(`  ws-opts:`);
+      lines.push(`    path: ${p.path || "/"}`);
+      if (p.host) {
+        lines.push(`    headers:`);
+        lines.push(`      Host: ${p.host}`);
+      }
+    }
+
+    return lines.join("\n");
+  }
+
+  function generateYaml(p: VlessParams, name: string): string {
+    const proxy = buildProxy(p, name);
+    return `port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+${proxy}
+
+proxy-groups:
+- name: "🚀 节点选择"
+  type: select
+  proxies:
+  - "♻️ 自动选择"
+  - "🎯 全球直连"
+  - ${name}
+
+- name: "♻️ 自动选择"
+  type: url-test
+  proxies:
+  - ${name}
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+
+- name: "🎯 全球直连"
+  type: select
+  proxies:
+  - DIRECT
+
+rules:
+  - DOMAIN,${p.server},DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 节点选择`;
   }
 
   function doConvert() {
@@ -77,7 +160,9 @@
     try {
       const params = parseVless(inputText);
       parsed = params;
-      const name = configName.trim() || `vless-${params.server}`;
+      nodeName = params.fragment || `vless-${params.server}`;
+      fileName = nodeName;
+      const name = nodeName.trim() || `vless-${params.server}`;
       result = generateYaml(params, name);
     } catch (e: unknown) {
       error = e instanceof Error ? e.message : "解析失败";
@@ -86,7 +171,7 @@
 
   function doExport() {
     if (!result) return;
-    const name = configName.trim() || `vless-${parsed?.server || "config"}`;
+    const name = fileName.trim() || nodeName.trim() || `vless-${parsed?.server || "config"}`;
     const blob = new Blob([result], { type: "text/yaml" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -111,30 +196,27 @@
     </div>
   </div>
   <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-    适用于 3x-ui 面板的 VLESS 链接，纯前端解析，无外部依赖。粘贴链接、选择模板、导出配置即可导入 Clash 使用。
+    适用于 3x-ui 面板的 VLESS 链接，纯前端解析，无外部依赖。支持 Reality、WS+TLS、xhttp 等传输方式。
   </p>
 </div>
 
 <!-- Input card -->
 <div class="bg-(--card-bg) rounded-xl border border-(--line-divider) p-5 mb-5">
-  <!-- Row 1: template + name -->
+  <!-- Row 1: node name + filename -->
   <div class="flex flex-col sm:flex-row gap-3 mb-4">
-    <div class="flex items-center gap-2">
-      <label class="text-xs text-neutral-400 flex-shrink-0">模板</label>
-      <select
-        bind:value={selectedTemplateId}
-        class="bg-neutral-50 dark:bg-neutral-800 border border-(--line-divider) rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-(--primary) transition-all"
-      >
-        {#each templates as t}
-          <option value={t.id}>{t.name}</option>
-        {/each}
-      </select>
+    <div class="flex items-center gap-2 flex-1">
+      <label class="text-xs text-neutral-400 flex-shrink-0">节点名称</label>
+      <input
+        bind:value={nodeName}
+        placeholder="解析后自动填入，可修改"
+        class="flex-1 bg-neutral-50 dark:bg-neutral-800 border border-(--line-divider) rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-(--primary) placeholder-neutral-400 transition-all"
+      />
     </div>
     <div class="flex items-center gap-2 flex-1">
-      <label class="text-xs text-neutral-400 flex-shrink-0">名称</label>
+      <label class="text-xs text-neutral-400 flex-shrink-0">文件名</label>
       <input
-        bind:value={configName}
-        placeholder="可选，默认取服务器域名"
+        bind:value={fileName}
+        placeholder="默认同节点名称"
         class="flex-1 bg-neutral-50 dark:bg-neutral-800 border border-(--line-divider) rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-(--primary) placeholder-neutral-400 transition-all"
       />
     </div>
@@ -142,7 +224,7 @@
   <!-- Row 2: textarea -->
   <textarea
     bind:value={inputText}
-    placeholder="vless://UUID@HOST:PORT?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=...&security=reality&sid=...&sni=...&type=tcp#NAME"
+    placeholder="vless://UUID@HOST:PORT?encryption=none&fp=chrome&security=reality&type=xhttp#NAME"
     rows="3"
     class="w-full bg-neutral-50 dark:bg-neutral-800 border border-(--line-divider) rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-(--primary) placeholder-neutral-400 resize-y leading-normal transition-all mb-4"
   ></textarea>
@@ -185,10 +267,12 @@
         <span class="text-neutral-400 w-12 flex-shrink-0 text-right">传输</span>
         <span class="text-neutral-700 dark:text-neutral-200">{parsed.network} / {parsed.security}</span>
       </div>
-      <div class="flex items-baseline gap-2">
-        <span class="text-neutral-400 w-12 flex-shrink-0 text-right">Flow</span>
-        <span class="text-neutral-700 dark:text-neutral-200">{parsed.flow}</span>
-      </div>
+      {#if parsed.flow}
+        <div class="flex items-baseline gap-2">
+          <span class="text-neutral-400 w-12 flex-shrink-0 text-right">Flow</span>
+          <span class="text-neutral-700 dark:text-neutral-200">{parsed.flow}</span>
+        </div>
+      {/if}
       <div class="flex items-baseline gap-2">
         <span class="text-neutral-400 w-12 flex-shrink-0 text-right">指纹</span>
         <span class="text-neutral-700 dark:text-neutral-200">{parsed.fingerprint}</span>
