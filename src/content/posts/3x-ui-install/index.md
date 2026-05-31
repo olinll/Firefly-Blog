@@ -1,19 +1,23 @@
 ---
-title: 「教程」部署 3x-UI 面板
+title: 「教程」部署 3X-UI 面板
 published: 2026-05-30
 updated: 2026-05-30
-description: 记录一下搭建x-ui面板的过程
+description: 记录一下搭建3x-ui面板的过程
 image: ./img/index-011.webp
 tags:
   - 代理
   - Linux
 category: 记录
 draft: false
+password: "123456"
+passwordHint: 文章涉及敏感内容，请输入密码访问
 ---
 
 这里使用的面板是：
 
 ::github{repo="mhsanaei/3x-ui"}
+
+>作为原始 X-UI 项目的增强版本，3X-UI 提供了更好的稳定性、更广泛的协议支持和额外的功能。
 
 ## 一、准备工作
 
@@ -193,6 +197,19 @@ API Token:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 > [!WARNING] 警告
 > 如果你的面板没有配置SSL证书，切勿直接在浏览器中访问，需要使用SSH隧道访问，否则后期容易出现安全漏洞等问题
+
+### 开启 BBR 加速
+
+>[!NOTE] 什么是BBR？
+>BBR 是 Google 设计的 TCP 拥塞控制算法，能根据网络带宽和延迟动态调整传输速度，提升网络吞吐量并降低延迟。
+
+**一键开启BBR加速**
+
+```bash
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf sysctl -p
+```
+
+执行完用`lsmod | grep bbr`检查，出现 `bbr` 就成功。
 
 ## 四、配置面板
 
