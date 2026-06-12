@@ -1,8 +1,8 @@
 ---
 title: Alpine Linux 极简安装流程与生产环境轻量化配置
 slug: alpine-install-config
-published: 2026-06-11
-updated: 2026-06-11
+published: 2026-03-01
+updated: 2026-03-01
 description: 追求极致轻量？本文带你快速上手 Alpine Linux 安装与 APK 包管理，教你如何配置资源占用极低的微服务生产环境。
 image: "api"
 category: Linux 系统管理
