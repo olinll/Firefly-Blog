@@ -4,6 +4,7 @@ slug: postgresql-fdw
 published: 2026-01-26
 updated: 2026-01-26
 description: 使用 postgres_fdw 扩展配置 PostgreSQL 外部数据包装器，实现跨数据库实例的表查询，解决 PostgreSQL 不支持跨库查询的限制。
+image: "api"
 
 category: 服务与应用运维
 tags: ["PostgreSQL", "数据库"]

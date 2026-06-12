@@ -4,6 +4,7 @@ slug: jdk-install
 published: 2026-01-05
 updated: 2026-01-05
 description: 通过下载 tar.gz 包手动安装 JDK 1.8，配置 JAVA_HOME 等环境变量，适用于 CentOS、Debian、Ubuntu 等主流发行版。
+image: "api"
 
 category: 服务与应用运维
 tags: ["JDK", "Java", "环境配置"]

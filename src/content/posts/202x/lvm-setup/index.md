@@ -4,6 +4,7 @@ slug: lvm-setup
 published: 2026-03-02
 updated: 2026-03-02
 description: 本文详细的介绍了如何使用LVM进行创建分区,扩容分区等操作
+image: "api"
 
 category: Linux 系统管理
 tags: ["LVM", "Disk"]

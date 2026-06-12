@@ -4,14 +4,14 @@ slug: basic-auth-auto-login-bypass
 published: 2026-01-03
 updated: 2026-01-03
 description: 详解如何通过 URL 传参、Nginx 反向代理注入 Header 以及浏览器插件等方式，实现对 Basic Auth 认证站点的免密自动登录。
-image: ./images/basicauth-nopass-cover.webp
+image: "./images/basicauth-nopass-cover.webp"
 category: 技术插曲与避坑
 tags: ["Basic Auth", "Nginx", "安全"]
 draft: false
 # pinned: false                                  # 置顶
 ---
 
-# 前言
+## 前言
 
 问题原因呢，是我在整理书签和密码填充工具的时候发现的一个问题，对于这样的弹框，因为是直接弹出在浏览器的，密码填充工具无法进行填充账号密码等信息。
 
@@ -19,7 +19,7 @@ draft: false
 
 ![](./images/basicauth-nopass-cover.webp)
 
-# 什么是Basic Auth？
+## 什么是Basic Auth？
 
 Basic Auth，也称为 HTTP 基本认证（HTTP Basic Authentication），是一种用于 HTTP 协议的简单认证机制。在 Basic Auth 中，客户端在发送请求时，将用户名和密码以 Base64 编码的形式包含在请求头的 Authorization 字段中发送给服务器，服务器收到请求后，会解码 Authorization 字段并验证用户名和密码。
 
@@ -31,7 +31,7 @@ Basic Auth，也称为 HTTP 基本认证（HTTP Basic Authentication），是一
 
 ![](./images/basicauth-nopass-1.webp)
 
-# 解决问题
+## 解决问题
 
 那么堡垒机是怎么解决此类问题的？
 

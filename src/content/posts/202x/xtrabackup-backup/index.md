@@ -4,6 +4,7 @@ slug: xtrabackup-backup
 published: 2026-01-13
 updated: 2026-01-13
 description: 介绍 Percona Xtrabackup 的安装配置与全量备份操作，支持不停机热备份 MySQL 数据库，适用于生产环境数据保护。
+image: "api"
 
 category: 服务与应用运维
 tags: ["MySQL", "备份", "运维"]

@@ -4,6 +4,7 @@ slug: pve-gpu-passthrough
 published: 2026-02-16
 updated: 2026-02-16
 description: 在 Proxmox VE 上为虚拟机配置 Intel 核显 PCIe 独占直通，包含 IOMMU 启用、内核模块加载、VFIO 绑定及虚拟机配置的完整流程。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["PVE", "Homelab", "虚拟化", "核显"]

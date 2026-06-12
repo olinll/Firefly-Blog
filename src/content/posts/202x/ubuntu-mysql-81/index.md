@@ -4,6 +4,7 @@ slug: ubuntu-mysql-81
 published: 2026-01-12
 updated: 2026-01-12
 description: 在 Ubuntu 22.04 上通过 DEB 包安装 MySQL 8.1 社区版，涵盖安装顺序、外部访问配置及自定义数据目录迁移。
+image: "api"
 
 category: 服务与应用运维
 tags: ["MySQL", "Ubuntu", "数据库"]

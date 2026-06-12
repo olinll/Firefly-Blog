@@ -4,6 +4,7 @@ slug: nginx-guide
 published: 2026-01-09
 updated: 2026-01-09
 description: 介绍 Nginx 在 CentOS 和 Ubuntu 上的安装方法，以及常用的配置模板，包括静态站点、Vue SPA、SSL/HTTPS、反向代理、WebSocket、TCP 转发、MinIO 代理等。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Nginx", "反向代理", "SSL"]

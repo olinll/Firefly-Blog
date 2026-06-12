@@ -4,6 +4,7 @@ slug: immich-deploy
 published: 2026-02-08
 updated: 2026-02-08
 description: 记录 Immich 自托管照片管理软件的 Docker Compose 部署方式，支持 Intel 核显 OpenVINO 加速，以及中文地理编码和 CLIP 大模型配置。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["Immich", "Homelab", "Docker"]

@@ -4,6 +4,7 @@ slug: ubuntu-install-config
 published: 2026-03-01
 updated: 2026-03-01
 description: Ubuntu Server 24.04/22.04 LTS 图文安装指南。涵盖镜像源优化、SSH 加固及性能调优，手把手教你打造高效、流畅的开发者运行环境。
+image: "api"
 
 category: Linux 系统管理
 tags: ["系统安装", "Ubuntu"]

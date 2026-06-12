@@ -4,6 +4,7 @@ slug: truenas-prometheus-grafana-monitoring
 published: 2026-03-08
 updated: 2026-03-08
 description: 通过 Graphite 协议采集 TrueNAS SCALE / Core 指标，经 graphite-prometheus 转换后交由 Prometheus 存储、Grafana 可视化，搭建一套独立于 TrueNAS 自带报告的长期监控。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["TrueNAS", "TrueNAS SCALE", "Prometheus", "Grafana", "Graphite", "Docker Compose", "HomeLab", "ZFS"]

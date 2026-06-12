@@ -4,6 +4,7 @@ slug: kubelet-change-dir
 published: 2026-02-05
 updated: 2026-02-05
 description: 介绍如何将 Kubelet 的默认工作目录从系统盘迁移到数据盘，包括修改配置法和软链法两种方案，以及 kubeadm 初始化时直接指定工作目录的方法。
+image: "api"
 
 category: 虚拟化与容器
 tags: ["Kubernetes", "运维"]

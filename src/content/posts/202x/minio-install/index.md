@@ -4,6 +4,7 @@ slug: minio-install
 published: 2026-01-20
 updated: 2026-01-20
 description: 介绍使用 Docker Compose 和二进制文件两种方式部署 MinIO 最后免费版本，配置 Systemd 服务实现开机自启。
+image: "api"
 
 category: 服务与应用运维
 tags: ["MinIO", "对象存储", "Docker"]

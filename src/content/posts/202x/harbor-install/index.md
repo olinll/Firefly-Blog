@@ -4,6 +4,7 @@ slug: harbor-install
 published: 2026-02-06
 updated: 2026-02-06
 description: 使用 Docker Compose 部署 Harbor 私有镜像仓库，包含自签名 SSL 证书生成、YAML 配置、Nginx 反向代理等完整流程。
+image: "api"
 
 category: 虚拟化与容器
 tags: ["Docker", "Harbor", "运维"]

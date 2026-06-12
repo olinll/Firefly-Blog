@@ -4,6 +4,7 @@ slug: nexus-maven-private
 published: 2026-01-07
 updated: 2026-01-07
 description: 在 Linux 上安装 Sonatype Nexus 3 搭建 Maven 私服，配置专用用户、systemd 服务与开机自启，附常见问题解决方案。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Nexus", "Maven", "私服"]

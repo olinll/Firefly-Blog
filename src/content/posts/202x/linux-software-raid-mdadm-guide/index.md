@@ -4,6 +4,7 @@ slug: linux-software-raid-mdadm-guide
 published: 2026-02-10
 updated: 2026-02-10
 description: 在 Ubuntu Server 上用 mdadm 把两块以上数据盘做成软 RAID，承载 Docker 等应用数据——从磁盘准备、RAID 1 创建、持久化挂载，到故障磁盘替换、mdmonitor 邮件/Bark 告警的完整流程。
+image: "api"
 
 category: Linux 系统管理
 tags: ["Linux", "Ubuntu Server", "RAID", "软RAID", "mdadm", "ext4", "存储", "高可用", "故障恢复", "运维"]

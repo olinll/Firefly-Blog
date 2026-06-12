@@ -4,6 +4,7 @@ slug: vscode-optimize
 published: 2025-11-12
 updated: 2025-11-12
 description: 在VSCode中优化开发环境，如何解决一些遇到的问题。
+image: "api"
 
 category: 技术插曲与避坑
 tags: ["VSCode"]
@@ -11,7 +12,7 @@ draft: false
 # pinned: false                                  # 置顶
 ---
 
-# vscode 打开多个项目的时候，设置“任务栏处以项目名称”显示
+## vscode 打开多个项目的时候，设置“任务栏处以项目名称”显示
 
 在设置中搜 “Window: Title”改成：
 
@@ -23,7 +24,7 @@ ${dirty}${rootName}${separator}${activeEditorMedium}${separator}${appName}
 
 ```
 
-# VSCode 终端显示“pnpm : 无法加载文件 C:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本”
+## VSCode 终端显示“pnpm : 无法加载文件 C:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本”
 
 解决方法：
 

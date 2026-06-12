@@ -4,6 +4,7 @@ slug: jar-service-script
 published: 2026-01-02
 updated: 2026-01-02
 description: 提供一个开箱即用的 Shell 脚本，用于管理 Java JAR 包服务的启动、停止、重启与状态查看，适合生产环境部署。
+image: "api"
 
 category: Linux 系统管理
 tags: ["Linux", "运维", "Shell", "Java"]

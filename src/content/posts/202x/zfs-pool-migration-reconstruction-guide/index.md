@@ -4,6 +4,7 @@ slug: zfs-pool-migration-reconstruction-guide
 published: 2026-02-12
 updated: 2026-02-12
 description: 在 Proxmox VE 上借助外置盘做中转，把现有 ZFS 池安全重建为 RAIDZ1——完整流程含配置备份、VM 停机、ashift 与 4K 对齐原理、zfs snapshot/send 全量与增量、备份完整性校验、销毁与恢复、回滚预案。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["ZFS", "Proxmox", "PVE", "RAIDZ", "zfs-send", "Storage", "数据迁移", "VM 迁移", "HomeLab"]

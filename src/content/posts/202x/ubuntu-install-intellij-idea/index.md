@@ -4,6 +4,7 @@ slug: ubuntu-install-intellij-idea
 published: 2026-03-03
 updated: 2026-03-03
 description: 详解在 Ubuntu 系统下安装 IntelliJ IDEA 的标准流程，涵盖手动解压安装、创建桌面快捷方式及全局环境变量配置。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Ubuntu", "IntelliJ IDEA", "开发环境"]

@@ -4,6 +4,7 @@ slug: maven-install
 published: 2026-01-06
 updated: 2026-01-06
 description: 下载 Apache Maven tar.gz 包并配置环境变量，同时附上阿里云镜像与 Nexus 私服的 settings.xml 完整配置示例。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Maven", "Java", "环境配置"]

@@ -4,6 +4,7 @@ slug: halo-hao-navigation
 published: 2025-11-09
 updated: 2025-11-09
 description: 详解如何在Halo博客中添加个人导航页，包括添加链接、分组、自定义属性等。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["Halo", "主题", "导航页"]
@@ -23,7 +24,7 @@ draft: false
 
 下面就开始教程吧！
 
-# 修改Halo运行配置
+## 修改Halo运行配置
 
 在运行时会缓存模板文件，下次访问不再会读取物理的模板文件，这会有性能的损耗。
 
@@ -42,7 +43,7 @@ draft: false
 - --spring.thymeleaf.cache=false
 ```
 
-# 创建navigation模板页面
+## 创建navigation模板页面
 
 首先先找到主题文件夹：在持久化存储的`halo2`文件夹下的`themes/theme-hao`里面
 

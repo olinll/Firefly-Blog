@@ -4,6 +4,7 @@ slug: why-nobody-reads-my-blog
 published: 2026-03-29
 updated: 2026-03-29
 description: 记录一次深夜的创作者“自闭”：当你掏心掏肺写出的硬核干货石沉大海，该如何面对这种让人窒息的失落感？
+image: "api"
 
 category: 碎影与杂谈
 tags: ["何意味"]

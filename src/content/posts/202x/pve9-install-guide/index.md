@@ -1,9 +1,10 @@
 ---
 title: Proxmox VE 9.0 安装与初始配置指南
-slug: pve9.0-install-guide
+slug: pve9-install-guide
 published: 2026-02-17
 updated: 2026-02-17
 description: 从下载安装到换源、内核更新、SR-IOV 核显虚拟化、订阅弹窗去除、存储合并的 PVE 9.0 完整配置流程。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["PVE", "Homelab", "虚拟化"]

@@ -4,7 +4,7 @@ slug: arth-online-1-star-review
 published: 2026-03-29
 updated: 2026-03-29
 description: 这是一篇关于《地球 Online》删档内测版的深度锐评。画质拉满但平衡性极差，随机性太强且无法存档。策划出来挨打！欢迎踊跃发言！
-image: './images/arth-online-cover.webp'
+image: "./images/arth-online-cover.webp"
 category: 碎影与杂谈
 tags: ["何意味"]
 draft: false

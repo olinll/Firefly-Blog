@@ -4,6 +4,7 @@ slug: minio-bucket-policy
 published: 2026-01-21
 updated: 2026-01-21
 description: 通过配置 MinIO 存储桶 JSON 策略，限制 ListBucket 等危险操作，防止存储桶文件目录泄露。
+image: "api"
 
 category: 服务与应用运维
 tags: ["MinIO", "对象存储", "安全"]

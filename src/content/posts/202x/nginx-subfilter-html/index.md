@@ -4,6 +4,7 @@ slug: nginx-subfilter-html
 published: 2026-04-11
 updated: 2026-04-11
 description: 通过 Nginx 的 ngx_http_sub_module 模块，在反向代理响应中注入自定义 JS、CSS 或 HTML 标签，适用于无法修改源码的第三方页面定制场景。
+image: "api"
 
 category: 服务与应用运维
 tags: []

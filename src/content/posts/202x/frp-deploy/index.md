@@ -4,6 +4,7 @@ slug: frp-deploy
 published: 2026-02-07
 updated: 2026-02-07
 description: 介绍如何使用 FRP 将内网主机端口通过公网服务器暴露到互联网，包括服务端与客户端的配置及 Systemd 服务管理。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["FRP", "内网穿透", "Homelab"]

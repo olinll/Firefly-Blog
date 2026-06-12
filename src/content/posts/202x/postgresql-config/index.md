@@ -4,6 +4,7 @@ slug: postgresql-config
 published: 2026-01-25
 updated: 2026-01-25
 description: 介绍 PostgreSQL 的远程访问配置（pg_hba.conf / postgresql.conf）以及将数据目录从默认路径迁移到自定义路径的操作步骤。
+image: "api"
 
 category: 服务与应用运维
 tags: ["PostgreSQL", "数据库"]

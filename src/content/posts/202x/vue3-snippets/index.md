@@ -4,6 +4,7 @@ slug: vue3-snippets
 published: 2025-01-25
 updated: 2025-01-25
 description: 收录 Vue3 与 Element Plus 开发中的常用代码片段，包括 el-table 序号、el-upload 图片上传、动态表单校验、flv.js 视频播放等。
+image: "api"
 
 category: 代码开发实战
 tags: ["Vue3", "Element Plus", "el-table", "el-upload", "el-form", "FLV"]

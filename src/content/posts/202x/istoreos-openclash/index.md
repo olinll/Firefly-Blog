@@ -4,6 +4,7 @@ slug: istoreos-openclash
 published: 2026-02-09
 updated: 2026-02-09
 description: 在 iStoreOS 上安装 OpenClash 客户端，将其配置为旁路由，解决 Docker 拉取镜像、GitHub 访问等网络问题。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["iStoreOS", "OpenClash", "Homelab", "网络"]

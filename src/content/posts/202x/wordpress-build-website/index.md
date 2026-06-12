@@ -4,7 +4,7 @@ slug: wordpress-build-website
 published: 2025-11-11
 updated: 2025-11-11
 description: 详解在WordPress中建站的步骤。
-image: './images/wordpress-build-website-454966.webp'
+image: "./images/wordpress-build-website-454966.webp"
 category: HomeLab 私有云
 tags: ["WordPress"]
 draft: false

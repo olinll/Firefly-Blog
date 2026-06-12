@@ -4,6 +4,7 @@ slug: linux-openvpn-installation-guide
 published: 2026-01-18
 updated: 2026-01-18
 description: 从零在 Linux 上搭 OpenVPN 服务端（一键脚本与手动 easy-rsa 两种方式）并让客户端接入。覆盖 Debian / Ubuntu / RHEL 系 / Alpine / Arch 五大发行版的安装与服务管理、.ovpn 和 client.conf 配置、systemd 与 OpenRC 启动、IP 转发与 NAT 规则、连接故障排查。
+image: "api"
 
 category: 服务与应用运维
 tags: ["OpenVPN", "Linux", "VPN", "网络", "PKI", "easy-rsa", "systemd", "OpenRC", "iptables", "NAT", "运维"]
@@ -55,7 +56,7 @@ draft: false
 
 ---
 
-# 第一部分：服务端部署
+## 第一部分：服务端部署
 
 两种方式都能用，**推荐一键脚本**——维护者持续更新、覆盖所有主流发行版、自动处理 PKI / iptables / systemd。**手动 easy-rsa** 适合想理解底层原理或要做深度定制的场景。
 
@@ -298,7 +299,7 @@ EOF
 
 ---
 
-# 第二部分：客户端接入
+## 第二部分：客户端接入
 
 ## 4. 安装 OpenVPN 客户端
 

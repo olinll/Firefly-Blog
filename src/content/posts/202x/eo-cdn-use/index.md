@@ -11,11 +11,11 @@ draft: false
 # pinned: false                                  # 置顶
 ---
 
-# 正式开始
+## 正式开始
 
 对于EdgeOne可加速的站点主要有2种，大部分互联网上可访问的站点都是这2种。  
 
-# 静态站点
+## 静态站点
 
 这类站点是使用Vercel、Github Pages、CloudFlare Pages搭建的静态网页，通常通过Git进行订阅更新，当你推送新内容的时候，服务商会自动的拉取代码，允许CI/CD，自动打包部署上线。
 

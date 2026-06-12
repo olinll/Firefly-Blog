@@ -4,6 +4,7 @@ slug: postgresql-backup
 published: 2026-01-27
 updated: 2026-01-27
 description: 介绍使用 pg_dumpall 和 pg_dump 对 PostgreSQL 进行全量备份与单表备份，以及在实体机和 Docker 容器中的恢复方法。
+image: "api"
 
 category: 服务与应用运维
 tags: ["PostgreSQL", "数据库", "备份"]

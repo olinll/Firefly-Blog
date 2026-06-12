@@ -4,6 +4,7 @@ slug: server-init
 published: 2026-02-13
 updated: 2026-02-13
 description: 记录生产环境服务器从零开始的完整初始化流程，包括换源、时区配置、K8s 集群搭建、MinIO、Redis 集群、MySQL 单节点安装。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["运维", "Linux", "Homelab"]

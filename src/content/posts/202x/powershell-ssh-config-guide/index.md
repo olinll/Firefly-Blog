@@ -4,6 +4,7 @@ slug: powershell-ssh-config-guide
 published: 2026-03-07
 updated: 2026-03-07
 description: 在 Windows PowerShell 下用 OpenSSH 实现 ed25519 免密登录、SSH Config 短别名、本地/远程/动态三种端口转发以及多密钥管理。
+image: "api"
 
 category: Linux 系统管理
 tags: ["SSH", "OpenSSH", "PowerShell", "Windows", "端口转发", "免密登录", "ed25519", "Linux"]

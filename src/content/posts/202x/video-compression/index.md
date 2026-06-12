@@ -4,7 +4,7 @@ slug: video-compression
 published: 2026-03-03
 updated: 2026-03-03
 description: 录个屏硬盘炸了？一个视频300G？教你把大文件压缩到100G以下
-image: ./images/video-compression-20260303195035.webp
+image: "./images/video-compression-20260303195035.webp"
 category: 技术插曲与避坑
 tags: ["视频处理", "ffmpeg"]
 draft: false

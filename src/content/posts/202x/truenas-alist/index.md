@@ -4,6 +4,7 @@ slug: truenas-alist
 published: 2026-02-10
 updated: 2026-02-10
 description: 介绍如何在 TrueNAS Scale 上通过自定义 Docker 容器运行 Alist，实现对 TrueNAS 存储文件的 Web 管理访问。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["TrueNAS", "Alist", "Homelab", "Docker"]

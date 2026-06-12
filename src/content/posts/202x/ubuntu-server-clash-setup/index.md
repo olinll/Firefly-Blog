@@ -4,6 +4,7 @@ slug: ubuntu-server-clash-setup
 published: 2026-03-10
 updated: 2026-03-10
 description: 在没有图形界面的 Ubuntu Server 下，通过 Mihomo (Clash Meta) 二进制快速搭建代理，临时解决 GitHub 下载慢、外网 API 不通的问题。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Ubuntu", "Clash", "Clash Meta", "Mihomo", "Proxy", "Linux"]

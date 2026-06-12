@@ -4,6 +4,7 @@ slug: nacos-guide
 published: 2026-01-22
 updated: 2026-01-22
 description: Nacos 配置中心的单机安装、MySQL 持久化以及鉴权配置完整指南，适用于 2.x 版本。
+image: "api"
 
 category: 服务与应用运维
 tags: ["Nacos", "配置中心", "Java", "安全"]

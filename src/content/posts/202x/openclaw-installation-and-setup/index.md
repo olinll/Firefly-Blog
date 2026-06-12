@@ -4,6 +4,7 @@ slug: openclaw-installation-and-setup
 published: 2026-03-07
 updated: 2026-03-07
 description: 在 Windows WSL / Linux 环境下导入 Ubuntu 子系统、安装 OpenClaw (小龙虾)，配置 gateway、token 认证与 systemd 开机自启的完整流程。
+image: "api"
 
 category: 服务与应用运维
 tags: ["OpenClaw", "AI", "Automation", "WSL", "Ubuntu", "Windows", "systemd", "HomeLab"]

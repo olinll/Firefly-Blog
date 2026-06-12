@@ -4,6 +4,7 @@ slug: jumpserver-install
 published: 2026-02-12
 updated: 2026-02-12
 description: 介绍 JumpServer 开源堡垒机的部署方式，包括最低硬件要求、Linux 单机部署文档参考及常见问题处理。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["JumpServer", "堡垒机", "运维", "Homelab"]

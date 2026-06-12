@@ -4,7 +4,7 @@ slug: lsky-pro-bt-panel-deploy
 published: 2025-11-09
 updated: 2025-11-09
 description: 详解如何使用宝塔面板高效部署 Lsky Pro 兰空图床，涵盖环境检查、权限设置及常见坑点避让。
-image: './images/baota-depoy-lskypro-824310.webp'
+image: "./images/baota-depoy-lskypro-824310.webp"
 category: HomeLab 私有云
 tags: ["Lsky Pro", "宝塔面板", "图床"]
 draft: false
@@ -117,7 +117,7 @@ location / {
 
 兰空图床企业版需要通过 php cli 的方式启动队列、计划任务处理进程，此操作需要登录 SSH。
 
-#### 配置队列处理进程
+### 配置队列处理进程
 
 打开 进程守护管理器进行配置
 
@@ -155,7 +155,7 @@ nano /www/server/php/82/etc/php-cli.ini
 extension=ixed.8.2.lin
 ```
 
-#### 配置计划任务处理进程
+### 配置计划任务处理进程
 
 计划任务需要用到 linux 中的 Crontab
 

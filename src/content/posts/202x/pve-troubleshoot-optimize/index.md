@@ -4,6 +4,7 @@ slug: pve-troubleshoot-optimize
 published: 2026-02-14
 updated: 2026-02-14
 description: 汇总 Proxmox VE 常见问题的解决方法，包括 CPU 调度优化、温度传感器显示、网卡配置修复、qemu-guest-agent 安装及黑群晖型号选择备忘。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["PVE", "Homelab", "运维"]

@@ -4,6 +4,7 @@ slug: rabbitmq-delayed-message-plugin-setup
 published: 2026-02-27
 updated: 2026-02-27
 description: 在 Docker Compose 下安装 rabbitmq_delayed_message_exchange 插件，Spring AMQP 声明延迟 exchange、发送带 x-delay 的消息，并与传统 DLQ + TTL 方案做选型对比。
+image: "api"
 
 category: 服务与应用运维
 tags: ["RabbitMQ", "消息队列", "AMQP", "延迟队列", "延迟消息", "插件", "Docker", "Docker Compose", "Java", "Spring Boot"]

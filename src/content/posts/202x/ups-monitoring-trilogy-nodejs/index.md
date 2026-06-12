@@ -4,7 +4,7 @@ slug: ups-monitoring-trilogy-nodejs
 published: 2026-04-01
 updated: 2026-04-01
 description: 从 PVE 备注里的简陋脚本，到独立的 Node.js Web 监控页，记录一个 HomeLab 玩家的 UPS 监控进阶之路。
-image: ./images/ups-v3-pve-ui.webp
+image: "./images/ups-v3-pve-ui.webp"
 category: HomeLab 私有云
 tags: ["UPS", "HomeLab", "Node.js", "PVE", "NUT"]
 draft: false

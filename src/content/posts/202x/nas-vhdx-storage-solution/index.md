@@ -4,7 +4,7 @@ slug: nas-vhdx-storage-solution
 published: 2026-03-08
 updated: 2026-03-08
 description: 针对 NAS 存储海量碎文件导致的卡顿与 SMB 传输缓慢问题，通过 VHDX 虚拟磁盘镜像实现“化零为整”的存储优化方案。
-image: ./images/vhdx-cover.webp
+image: "./images/vhdx-cover.webp"
 category: HomeLab 私有云
 tags: ["NAS", "存储优化", "VHDX"]
 draft: false

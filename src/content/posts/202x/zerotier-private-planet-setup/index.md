@@ -4,6 +4,7 @@ slug: zerotier-private-planet-setup
 published: 2026-02-25
 updated: 2026-02-25
 description: 基于 xubiaolin/docker-zerotier-planet 镜像搭建国内云服务器上的 ZeroTier 私有 Planet 根节点，从容器部署、客户端 planet 文件替换到延迟验证的完整流程，并给出局域网互访与 Moon 进阶方案。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["ZeroTier", "内网穿透", "Planet", "Moon", "VPN", "SDN", "组网", "Docker", "Docker Compose", "HomeLab"]

@@ -4,6 +4,7 @@ slug: postgresql-install
 published: 2026-01-24
 updated: 2026-01-24
 description: 介绍在 Ubuntu 上二进制安装 PostgreSQL 14 及使用 Docker Compose 部署的方式，包括修改数据目录和密码等基础配置。
+image: "api"
 
 category: 服务与应用运维
 tags: ["PostgreSQL", "数据库"]

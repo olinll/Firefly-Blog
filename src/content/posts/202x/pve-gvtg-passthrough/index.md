@@ -4,6 +4,7 @@ slug: pve-gvtg-passthrough
 published: 2026-02-15
 updated: 2026-02-15
 description: 在 Proxmox VE 上为 Intel 5-10 代 CPU 开启 GVT-g 核显虚拟化，实现多个虚拟机共享宿主机集成显卡，适合需要图形加速但不独占 GPU 的场景。
+image: "api"
 
 category: HomeLab 私有云
 tags: ["PVE", "Homelab", "虚拟化", "核显"]

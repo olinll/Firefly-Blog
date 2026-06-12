@@ -4,6 +4,7 @@ slug: umami-config
 published: 2026-01-24
 updated: 2026-01-24
 description: 因为官方的API请求时间太久，所以自建了一个umami
+image: "api"
 
 category: HomeLab 私有云
 tags: ["Umami", "配置"]
@@ -11,7 +12,7 @@ draft: false
 # pinned: false                                  # 置顶
 ---
 
-# 写在前面
+## 写在前面
 
 Umami 是一个开源的分析工具，它可以帮助你了解你的网站的流量来源、用户行为、页面访问等信息。
 
@@ -21,7 +22,7 @@ Umami官方文档: [Umami - Doc](https://umami.is/docs)
 
 Umami官方API: [Umami - API](https://umami.is/docs/api)
 
-# 正文
+## 正文
 
 这里需要注意一点，使用官方的api 只需要申请一个`API KEY` 就可以调用api了，如果使用自建服务器，需要先获取token，再进行调用。
 

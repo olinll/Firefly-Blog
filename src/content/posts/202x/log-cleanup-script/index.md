@@ -4,6 +4,7 @@ slug: log-cleanup-script
 published: 2026-01-01
 updated: 2026-01-01
 description: 使用 Shell 脚本结合 Crontab 定期清理 Linux 服务器上的过期日志文件，防止磁盘空间被日志耗尽。
+image: "api"
 
 category: Linux 系统管理
 tags: ["Linux", "运维", "Shell", "Crontab"]
