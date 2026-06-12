@@ -8,9 +8,9 @@ export const analyticsConfig: AnalyticsConfig = {
 	// Umami 统计配置
 	umamiAnalytics: {
 		// Umami Website ID
-		websiteId: "http://umami.olinl.com",
+		websiteId: "71de627e-31d7-4e39-b44a-ad899c628a5b",
 		// Umami JS地址，支持使用自建
-		scriptUrl: "http://umami.olinl.com/olinl_u.js",
+		scriptUrl: "https://umami.olinl.com/olinl_u.js",
 		// Umami 会话回放脚本地址，支持使用自建
 		replaysScriptUrl: "https://umami.olinl.com/recorder.js",
 		// 是否追踪出站链接
