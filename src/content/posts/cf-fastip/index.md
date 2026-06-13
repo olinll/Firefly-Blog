@@ -79,7 +79,7 @@ draft: false
 
 详情见下图：
 
-![创建CloudFlare Worker 并修改呆毛](./images/PixPin_2026-06-13_20-50-53.webp)
+![创建CloudFlare Worker 并修改代码](./images/PixPin_2026-06-13_20-50-53.webp)
 
 ```javascript
 
