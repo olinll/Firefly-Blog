@@ -7,6 +7,11 @@ export type AnalyticsConfig = {
 		replaysScriptUrl?: string; // Umami 会话回放脚本地址
 		trackOutboundLinks?: boolean; // 是否追踪出站链接点击事件，默认 true
 		collectWebVitals?: boolean; // 是否自动收集访客浏览器核心网页指标，默认 false
+		// 公开分享 ID（来自 Umami share URL，例如 https://umami.example.com/share/{shareId}）
+		// 用于客户端拉取浏览人数/浏览量
+		shareId?: string;
+		// 公开 API 基础地址（与 scriptUrl 同源），默认从 scriptUrl 推断
+		shareApiBase?: string;
 		replays?: {
 			enabled?: boolean; // 是否启用会话回放，默认 false
 			sampleRate?: number; // 录制会话采样率，范围 0-1，默认 0.15
