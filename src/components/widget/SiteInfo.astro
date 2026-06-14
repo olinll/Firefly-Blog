@@ -89,11 +89,23 @@ const licenseName = licenseConfig.enable ? licenseConfig.name : "None";
 
 // ---- 组装展示数据 ----
 // 始终显示的项目（列表）
-const mainItems = [
+const mainItems: {
+	icon: string;
+	label: string;
+	value: string;
+	cdnRow?: boolean;
+}[] = [
 	{
 		icon: "material-symbols:cloud-outline",
 		label: i18n(I18nKey.siteInfoBuildPlatform),
 		value: buildPlatform,
+	},
+	{
+		// CDN 行：默认隐藏，客户端检测命中厂商后填值并显示
+		icon: "material-symbols:bolt-outline",
+		label: i18n(I18nKey.siteInfoCDN),
+		value: "—",
+		cdnRow: true,
 	},
 	{
 		icon: "mdi:clover",
@@ -167,8 +179,14 @@ const detailItems: {
     {/* 始终显示的项目（列表卡片） */}
     <div class="flex flex-col gap-2">
       {
-        mainItems.map((item: { icon: string; label: string; value: string }) => (
-          <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50">
+        mainItems.map((item) => (
+          <div
+            class:list={[
+              "flex items-center justify-between px-3 py-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50",
+              item.cdnRow && "hidden",
+            ]}
+            data-cdn-row={item.cdnRow ? "" : undefined}
+          >
             <div class="flex items-center gap-2.5">
               <div class="text-(--primary) text-lg">
                 <Icon name={item.icon} is:inline />
@@ -180,6 +198,7 @@ const detailItems: {
             <span
               class="text-xs font-bold text-neutral-900 dark:text-neutral-100 text-right max-w-[55%] truncate"
               title={item.value}
+              data-cdn-value={item.cdnRow ? "" : undefined}
             >
               {item.value}
             </span>
@@ -273,4 +292,76 @@ const detailItems: {
   if (!customElements.get("site-info-collapse")) {
     customElements.define("site-info-collapse", SiteInfoCollapse);
   }
+</script>
+
+<script>
+  // CDN 厂商识别：客户端 fetch HEAD 当前页面，根据响应头特征匹配
+  // 顺序敏感：先匹配更明确的厂商定制头
+  type Vendor = {
+    name: string;
+    match: (h: Headers) => boolean;
+  };
+
+  const CDN_VENDORS: Vendor[] = [
+    {
+      name: "Cloudflare",
+      match: (h) => h.has("cf-ray") || h.has("cf-cache-status"),
+    },
+    {
+      name: "EdgeOne",
+      match: (h) => h.has("eo-cache-status") || h.has("eo-log-uuid"),
+    },
+    {
+      name: "Aliyun ESA",
+      match: (h) => {
+        for (const key of h.keys()) {
+          if (
+            key.startsWith("x-swift-") ||
+            key === "eagleid" ||
+            key.startsWith("x-esa-") ||
+            key.startsWith("ali-")
+          ) {
+            return true;
+          }
+        }
+        return false;
+      },
+    },
+  ];
+
+  async function detectCDN() {
+    const row = document.querySelector(
+      "[data-cdn-row]",
+    ) as HTMLElement | null;
+    if (!row) return;
+
+    try {
+      const resp = await fetch(window.location.pathname, {
+        method: "HEAD",
+        cache: "no-store",
+        credentials: "same-origin",
+      });
+      const headers = resp.headers;
+
+      for (const vendor of CDN_VENDORS) {
+        if (vendor.match(headers)) {
+          const valueEl = row.querySelector(
+            "[data-cdn-value]",
+          ) as HTMLElement | null;
+          if (valueEl) {
+            valueEl.textContent = vendor.name;
+            valueEl.title = vendor.name;
+          }
+          row.classList.remove("hidden");
+          return;
+        }
+      }
+      // 未命中任何厂商：保持 hidden
+    } catch {
+      // 网络异常：保持 hidden
+    }
+  }
+
+  detectCDN();
+  document.addEventListener("swup:contentReplaced", detectCDN);
 </script>

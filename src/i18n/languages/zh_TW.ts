@@ -278,6 +278,7 @@ export const zh_TW: Translation = {
 	[Key.siteInfo]: "站點資訊",
 	[Key.siteInfoBuildTime]: "構建時間",
 	[Key.siteInfoBuildPlatform]: "構建平台",
+	[Key.siteInfoCDN]: "CDN 加速",
 	[Key.siteInfoBlogVersion]: "部落格版本",
 	[Key.siteInfoAstroVersion]: "Astro",
 	[Key.siteInfoNodeVersion]: "Node",
