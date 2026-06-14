@@ -76,10 +76,10 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 自定义导航栏链接
 	links.push({
 		name: "统计",
-		url:"https://umami.olinl.com/share/Z8ZeG4A7PW3FEp4S",
+		url: "https://umami.olinl.com/share/Z8ZeG4A7PW3FEp4S",
 		external: true,
 		icon: "material-symbols:monitoring",
-	})
+	});
 	// links.push({
 	// 	name: "链接",
 	// 	url: "#",

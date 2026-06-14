@@ -37,4 +37,3 @@ export function buildAstroRedirects(): Record<
 		]),
 	);
 }
-

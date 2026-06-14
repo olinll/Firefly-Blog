@@ -11,8 +11,8 @@ const umamiCfg = analyticsConfig.umamiAnalytics;
 const showStats = !!umamiCfg?.shareId;
 const shareId = umamiCfg?.shareId || "";
 const shareApiBase =
-    umamiCfg?.shareApiBase ||
-    (umamiCfg?.scriptUrl ? new URL(umamiCfg.scriptUrl).origin : "");
+	umamiCfg?.shareApiBase ||
+	(umamiCfg?.scriptUrl ? new URL(umamiCfg.scriptUrl).origin : "");
 ---
 
 <div class="card-base p-3">
