@@ -1,0 +1,345 @@
+---
+import { Icon } from "astro-icon/components";
+import WidgetLayout from "@/components/common/WidgetLayout.astro";
+import { profileConfig } from "@/config";
+
+const githubLink = profileConfig.links.find((item) =>
+	/github\.com/i.test(item.url),
+);
+const githubUsername =
+	githubLink?.url.match(/github\.com\/([^/?#]+)/i)?.[1] || "";
+const githubProfileUrl = githubUsername
+	? `https://github.com/${githubUsername}`
+	: githubLink?.url || "https://github.com";
+
+const HEATMAP_DAYS = 100;
+
+type ContributionDay = {
+	date: string;
+	count: number;
+	level: number;
+	tooltip: string;
+};
+
+type CalendarData = {
+	days: ContributionDay[];
+	totalContributions: number;
+	activeDays: number;
+};
+
+function parseISODate(date: string) {
+	return new Date(`${date}T00:00:00.000Z`);
+}
+
+function formatISODate(date: Date) {
+	return date.toISOString().slice(0, 10);
+}
+
+function addDays(date: Date, days: number) {
+	const next = new Date(date);
+	next.setUTCDate(next.getUTCDate() + days);
+	return next;
+}
+
+function formatTooltipDate(date: string) {
+	return parseISODate(date).toLocaleDateString("zh-CN", {
+		month: "long",
+		day: "numeric",
+		timeZone: "UTC",
+	});
+}
+
+async function getCalendarData(username: string): Promise<CalendarData> {
+	if (!username) {
+		return { days: [], totalContributions: 0, activeDays: 0 };
+	}
+
+	const today = new Date();
+	const endDate = new Date(
+		Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()),
+	);
+	const startDate = addDays(endDate, -(HEATMAP_DAYS - 1));
+
+	try {
+		const controller = new AbortController();
+		const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+		const response = await fetch(
+			`https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+			{
+				headers: {
+					"user-agent": "Mozilla/5.0",
+				},
+				signal: controller.signal,
+			},
+		);
+		clearTimeout(timeoutId);
+		if (!response.ok) {
+			return { days: [], totalContributions: 0, activeDays: 0 };
+		}
+
+		const data = await response.json();
+		const daysData = data.contributions || [];
+
+		const days: ContributionDay[] = [];
+		for (
+			let cursor = startDate;
+			cursor <= endDate;
+			cursor = addDays(cursor, 1)
+		) {
+			const date = formatISODate(cursor);
+			const found = daysData.find(
+				(d: { date: string; count: number; level: number }) => d.date === date,
+			);
+			const count = found ? found.count : 0;
+			const level = found ? found.level : 0;
+			days.push({
+				date,
+				count,
+				level,
+				tooltip:
+					count > 0
+						? `${formatTooltipDate(date)} · ${count} 次提交`
+						: `${formatTooltipDate(date)} · 无提交`,
+			});
+		}
+
+		const totalContributions = days.reduce((sum, day) => sum + day.count, 0);
+		const activeDays = days.filter((day) => day.count > 0).length;
+
+		return { days, totalContributions, activeDays };
+	} catch {
+		return { days: [], totalContributions: 0, activeDays: 0 };
+	}
+}
+
+function buildWeeks(days: ContributionDay[]) {
+	if (days.length === 0) return [] as Array<Array<ContributionDay | null>>;
+
+	const rangeStart = parseISODate(days[0].date);
+	const lastDay = days.at(-1);
+	const rangeEnd = parseISODate(lastDay ? lastDay.date : days[0].date);
+	const calendarStart = addDays(rangeStart, -rangeStart.getUTCDay());
+	const calendarEnd = addDays(rangeEnd, 6 - rangeEnd.getUTCDay());
+	const dayMap = new Map(days.map((day) => [day.date, day]));
+	const weeks: Array<Array<ContributionDay | null>> = [];
+
+	for (
+		let weekStart = calendarStart;
+		weekStart <= calendarEnd;
+		weekStart = addDays(weekStart, 7)
+	) {
+		const week: Array<ContributionDay | null> = [];
+		for (let offset = 0; offset < 7; offset++) {
+			const current = addDays(weekStart, offset);
+			const date = formatISODate(current);
+			week.push(
+				current < rangeStart || current > rangeEnd
+					? null
+					: (dayMap.get(date) ?? null),
+			);
+		}
+		weeks.push(week);
+	}
+
+	return weeks;
+}
+
+export interface Props {
+	class?: string;
+	style?: string;
+}
+
+const { class: className, style } = Astro.props;
+const calendarData = await getCalendarData(githubUsername);
+const weeks = buildWeeks(calendarData.days);
+---
+
+<WidgetLayout id="github-heatmap" class={`${className} !overflow-visible`} style={style}>
+	{
+		githubUsername ? (
+			calendarData.days.length > 0 ? (
+				<div class="github-calendar-shell" style={`--week-count: ${weeks.length};`}>
+					<div class="flex items-center justify-between mb-2 text-xs text-neutral-600 dark:text-neutral-400">
+						<a
+							href={githubProfileUrl}
+							target="_blank"
+							rel="noreferrer"
+							class="flex items-center gap-1 font-bold hover:text-(--primary) transition-colors"
+							aria-label={`打开 ${githubUsername} 的 GitHub 主页`}
+						>
+							<Icon name="fa7-brands:github" class="text-sm" />
+							<span>GitHub</span>
+						</a>
+						<span class="font-mono text-[0.7rem] opacity-80">
+							{calendarData.activeDays}/{HEATMAP_DAYS}d
+						</span>
+					</div>
+
+					<div
+						class="github-calendar-grid"
+						role="grid"
+						aria-label={`${githubUsername} 的 GitHub 近 ${HEATMAP_DAYS} 天提交日历`}
+					>
+						{
+							weeks.map((week) => (
+								<div class="github-calendar-week" role="row">
+									{
+										week.map((day) =>
+											day ? (
+												<div class="github-calendar-day-wrap">
+													<button
+														type="button"
+														class:list={[
+															"github-calendar-day",
+															`github-calendar-level-${day.level}`,
+														]}
+														aria-label={day.tooltip}
+													></button>
+													<div class="github-calendar-tooltip" role="tooltip">
+														{day.tooltip}
+													</div>
+												</div>
+											) : (
+												<span class="github-calendar-day-placeholder" aria-hidden="true" />
+											),
+										)
+									}
+								</div>
+							))
+						}
+					</div>
+				</div>
+			) : (
+				<div class="rounded-2xl border border-dashed border-black/10 px-4 py-6 text-sm text-neutral-500 dark:border-white/10 dark:text-neutral-400">
+					暂时未获取到 GitHub 提交数据。
+				</div>
+			)
+		) : (
+			<div class="rounded-2xl border border-dashed border-black/10 px-4 py-6 text-sm text-neutral-500 dark:border-white/10 dark:text-neutral-400">
+				请先在个人资料链接中配置 GitHub 主页地址。
+			</div>
+		)
+	}
+</WidgetLayout>
+
+<style is:global>
+	#github-heatmap .github-calendar-shell {
+		padding-top: 0.15rem;
+	}
+
+	#github-heatmap .github-calendar-grid {
+		--calendar-gap: 0.25rem;
+		display: grid;
+		grid-template-columns: repeat(var(--week-count), minmax(0, 1fr));
+		column-gap: var(--calendar-gap);
+		width: 100%;
+	}
+
+	#github-heatmap .github-calendar-week {
+		display: grid;
+		grid-template-rows: repeat(7, minmax(0, 1fr));
+		row-gap: var(--calendar-gap);
+	}
+
+	#github-heatmap .github-calendar-day-wrap {
+		position: relative;
+		width: 100%;
+	}
+
+	#github-heatmap .github-calendar-day-wrap:hover,
+	#github-heatmap .github-calendar-day-wrap:focus-within {
+		z-index: 9999;
+	}
+
+	#github-heatmap .github-calendar-day,
+	#github-heatmap .github-calendar-day-placeholder {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		border-radius: 3px;
+	}
+
+	#github-heatmap .github-calendar-day {
+		display: block;
+		padding: 0;
+		border: none;
+		appearance: none;
+		-webkit-appearance: none;
+		background-clip: padding-box;
+		cursor: default;
+		box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--line-divider) 60%, transparent);
+		transition:
+			transform 0.1s ease,
+			box-shadow 0.1s ease;
+	}
+
+	#github-heatmap .github-calendar-day:hover,
+	#github-heatmap .github-calendar-day:focus-visible {
+		transform: translateY(-2px);
+		box-shadow:
+			inset 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+			0 0 0 2px color-mix(in oklab, var(--primary) 15%, transparent);
+		outline: none;
+		z-index: 2;
+	}
+
+	#github-heatmap .github-calendar-day-placeholder {
+		display: block;
+		opacity: 0;
+	}
+
+	#github-heatmap .github-calendar-tooltip {
+		position: absolute;
+		left: 50%;
+		bottom: calc(100% + 6px);
+		transform: translateX(-50%) translateY(4px);
+		opacity: 0;
+		pointer-events: none;
+		padding: 0.25rem 0.5rem;
+		border-radius: 6px;
+		border: 1px solid var(--line-divider);
+		background: var(--card-bg);
+		box-shadow: 0 4px 12px color-mix(in oklab, black 15%, transparent);
+		white-space: nowrap;
+		font-size: 0.75rem;
+		line-height: 1.4;
+		color: var(--content-meta);
+		transition:
+			opacity 0.1s ease,
+			transform 0.1s ease;
+		z-index: 9999;
+	}
+
+	:root.dark #github-heatmap .github-calendar-tooltip {
+		background: #2a2a2a;
+		border-color: #444;
+		color: #e5e5e5;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+	}
+
+	#github-heatmap .github-calendar-day-wrap:hover .github-calendar-tooltip,
+	#github-heatmap .github-calendar-day-wrap:focus-within .github-calendar-tooltip {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+
+	#github-heatmap .github-calendar-level-0 {
+		background: color-mix(in oklab, var(--btn-regular-bg) 90%, var(--card-bg));
+	}
+
+	#github-heatmap .github-calendar-level-1 {
+		background: color-mix(in oklab, var(--primary) 30%, var(--btn-regular-bg));
+	}
+
+	#github-heatmap .github-calendar-level-2 {
+		background: color-mix(in oklab, var(--primary) 50%, var(--btn-regular-bg));
+	}
+
+	#github-heatmap .github-calendar-level-3 {
+		background: color-mix(in oklab, var(--primary) 70%, var(--btn-regular-bg));
+	}
+
+	#github-heatmap .github-calendar-level-4 {
+		background: color-mix(in oklab, var(--primary) 90%, var(--btn-regular-bg));
+	}
+</style>
