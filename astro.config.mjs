@@ -25,6 +25,7 @@ import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { expressiveCodeConfig, plantumlConfig, siteConfig } from "./src/config";
+import { buildAstroRedirects } from "./src/config/redirectsConfig";
 import I18nKey from "./src/i18n/i18nKey";
 import { i18n } from "./src/i18n/translation";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
@@ -58,6 +59,9 @@ export default defineConfig({
 	trailingSlash: "always",
 
 	adapter,
+
+	// 跳转映射表（见 src/config/redirectsConfig.ts），统一 302 临时跳转
+	redirects: buildAstroRedirects(),
 
 	// 图像优化配置
 	image: {
