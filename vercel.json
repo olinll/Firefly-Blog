@@ -6,8 +6,7 @@
   "git": {
     "deploymentEnabled": {
       "master": true,
-      "main": true,
-      "*": false
+      "page": false
     }
   },
   "headers": [
