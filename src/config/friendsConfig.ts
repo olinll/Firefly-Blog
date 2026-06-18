@@ -18,6 +18,27 @@ export const friendsPageConfig: FriendsPageConfig = {
 
 	// 是否开启随机排序配置，如果开启，就会忽略权重，构建时进行一次随机排序
 	randomizeSort: false,
+
+	// GitHub Issue 申请链接
+	applyLink:
+		"https://github.com/olinll/Firefly-Blog/issues/new?assignees=&labels=friend-link&projects=&template=friend-request.yml",
+
+	// 本站信息（用于弹窗站点信息区块 + swap 模板）
+	siteInfo: {
+		name: "Olinl Blog",
+		desc: "分享、实践、学习",
+		url: "https://blog.olinl.com",
+		avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0",
+	},
+
+	// 注意事项列表（用于弹窗注意事项区块）
+	notes: [
+		{ title: "友链互换", content: "申请前请先在你的网站添加本站友链。" },
+		{
+			title: "内容要求",
+			content: "内容积极向上、合法合规，全球可访问，以原创内容为主。",
+		},
+	],
 };
 
 // 友链配置
