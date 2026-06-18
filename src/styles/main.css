@@ -6,6 +6,10 @@
 @import './transition.css';
 @import './custom-scrollbar.css';
 @import './tags.css';
+@import './components/friend-card.css';
+@import './components/friend-rules-modal.css';
+@import './components/page-title.css';
+@import './pages/friends.css';
 
 
 @plugin '@tailwindcss/typography';

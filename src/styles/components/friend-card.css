@@ -1,0 +1,9 @@
+/* ============================================
+   友链卡片 — Firefly 原生样式
+   与旧版 friends.astro 内联卡片样式一致
+   ============================================ */
+
+/* 卡片内的图标（小箭头）颜色过渡 */
+.friend-card svg {
+	transition: opacity 300ms ease, transform 300ms ease, color 200ms ease;
+}
