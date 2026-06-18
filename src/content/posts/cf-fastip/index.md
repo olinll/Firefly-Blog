@@ -179,3 +179,42 @@ CloudFlare 的优选方案还有很多，外域优选、CloudFlare Tunnel 优选
 
 - 图文：[试试 Cloudflare IP 优选！让 Cloudflare 在国内再也不是减速器！ - 二叉树树](https://2x.nz/posts/cf-fastip/)
 - 视频：[全网最全 CF 优选全解（B 站）](https://www.bilibili.com/video/BV1QpSoBqERj)
+
+## 编辑建议
+
+> 以下建议基于本条目内容生成，仅供发布前参考。
+
+### 文章内容建议
+- 建议补充"优选域名的选取标准"小节：当前直接推荐 `cf.090227.xyz` 但没讲这个域名是社区谁维护的、IP 来源是什么、更新频率如何；建议补充"如何自己用 `better-cloudflare-ip` 或 `CloudflareScanner` 跑一份本地区域的优选 IP 列表"。
+- 建议补充"Worker 反代的缓存策略"：第四章 `cache-control: 'public, max-age=600'` 写死 600 秒，对动态内容（如 Vercel SSR 页面）可能不合适；建议拆分为按 URL 模式设置不同 max-age，或直接 `no-cache`。
+- 建议补充"安全风险"小节：直接暴露 Worker 路由 + 自定义 DNS 解析后，源站可能收到非 Cloudflare 边缘节点的 IP 直连（绕过 WAF）；建议补一句"源站应设置 Cloudflare Authenticated Origin Pulls 或 IP 白名单"。
+- 建议补充"实测对比"：第 14-18 行只贴了 ITDOG 截图，没给具体"优选前 X 节点 / 优选后 Y 节点"对比数据；建议补一两句量化结论。
+
+### 修改建议
+- 文首 image 路径 `./images/PixPin_2026-06-13_21-00-11.webp` 用了 PixPin 截屏软件默认命名前缀，建议重命名为更语义化的 `cf-fastip-before-after.webp`（与 `eo-cdn-use-738037.webp` 等命名风格一致）。
+- description "通过 Worker 反代为网站做 IP 分流优选，提高国内访问速度与可用性"过于笼统，建议改为"通过 Cloudflare Worker 路由与社区优选域名结合，为 Pages/Worker/Vercel 站点实现国内访问加速"。
+- 第四章 Worker 代码 `domain_mappings` 注释 `'源站.com': '最终访问头.'` 中 `'源站.com'` 是占位符易误导，建议改为明显占位如 `<源站域名>` 或具体示例域名。
+- 分类 `技术` 与新的 7 分类不匹配（无对应），建议改为"网络"。
+
+### 合并建议
+- 候选合并对象：`eo-cdn-use`（国内访问加速主题）
+- 合并理由：可合并为"国内访问加速：CDN 切换与 CloudFlare 优选"系列；或保留独立并在文末"## 相关阅读"加链接。
+- 候选合并对象：`zerotier-private-planet-setup`（自建网络加速）
+- 合并理由：可加跳转链接，形成"访问加速/内网穿透"系列阅读路径。
+
+### slug 建议
+- 当前：`cf-fastip`
+- 建议：保留
+- 理由：slug 简洁且命中 CloudFlare 缩写 + 优选动作（fastip），可搜索性极强；可改为 `cloudflare-fastip-guide` 更正式但当前已足够。
+
+### 分类建议
+- 建议归类到：网络
+- 理由：CloudFlare 优选本质是国内访问网络加速，属典型网络主题；当前 `技术` 过于宽泛。
+
+### tags 建议
+- 建议：`[CloudFlare, CDN]`
+- 与现状对比：`[CloudFlare]`，差异说明：当前仅一个 tag 过少，建议补充 `CDN` 主题词与文章"国内 CDN 加速"主题对齐。
+
+### 其他建议
+- 建议补充配图：第四章 Worker 反代前后 source IP 抓包截图（用 `curl -v` 对比 origin 收到的 IP 是不是 CloudFlare 节点）、DNS 解析 `dig 123.cf.090227.xyz` 结果截图。
+- 建议在文首加"## 风险与免责"小段：优选使用第三方维护的 IP/域名稳定性不可控，建议在生产环境自己维护 IP 列表。
