@@ -20,7 +20,7 @@ export const redirectsConfig: Record<string, string> = {
 	// === 站外跳转示例 ===
 	// "/github/": "https://github.com/olinll",
 	// "/short-url/": "https://example.com/very/long/path/",
-	"/avatar": "https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0",
+	"/avatar-qlogo": "https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0",
 };
 
 /**
