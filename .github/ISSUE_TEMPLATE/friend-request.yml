@@ -1,0 +1,81 @@
+name: 申请友链
+description: 申请与 顾拾柒 的博客交换友链
+title: "[友链申请] "
+labels: ["friend-link"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 友链申请
+
+        请填写以下信息，提交后会自动同步到本站友链。
+
+        提交时会自动校验：
+        1. 网站链接必须能正常访问（HTTP 200）
+        2. 头像链接必须返回图片（Content-Type: image/*）
+
+        未通过会在本 Issue 中说明原因；修改后回复本 Issue 即可重新校验。
+
+        如校验一直失败（如对方网站临时挂掉、CDN 抽风），可联系博主人工评论 `/approve` 强制通过。
+
+        ## 自助修改友链
+        如需修改已通过的友链内容（链接 / 头像 / 描述 / QQ），请直接编辑本 Issue 正文后回复任意内容，机器人会自动重新处理并更新 `friendsConfig.ts` 中对应条目。
+
+        ## 技术交流群
+        您也可以加入本站技术交流 QQ 群：**1105154206**（验证消息填写"友链申请"可加速通过）
+
+        ## 申请要求
+        1. 在你的网站添加本站友链（强烈建议，但不再强制校验）
+        2. 内容积极向上、合法合规
+        3. 全球可访问、以原创内容为主
+
+        ## 本站信息
+        - **名称**: 顾拾柒
+        - **链接**: https://blog.olinl.com
+        - **头像**: https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0
+        - **描述**: 分享、实践、学习
+
+  - type: input
+    id: name
+    attributes:
+      label: 网站名称
+      description: 你的网站名称
+      placeholder: 例如：My Blog
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: 网站链接
+      description: 你的网站 URL（包含 https://）
+      placeholder: https://example.com
+    validations:
+      required: true
+
+  - type: input
+    id: avatar
+    attributes:
+      label: 网站头像 URL
+      description: 网站头像/Logo 的图片链接
+      placeholder: https://example.com/avatar.png
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: 网站描述
+      description: 简短描述你的网站（一句话）
+      placeholder: 例如：记录技术与生活的个人博客
+    validations:
+      required: true
+
+  - type: input
+    id: qq
+    attributes:
+      label: QQ 号码
+      description: 您的 QQ（用于联系 / 邀请进群，可选）
+      placeholder: 例如：12345678
+    validations:
+      required: false
