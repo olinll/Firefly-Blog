@@ -67,8 +67,17 @@ export const friendsConfig: FriendLink[] = [
 		imgurl: "https://avatars.githubusercontent.com/u/44914786?v=4&s=640",
 		desc: "The web framework for content-driven websites. ⭐️ Star to support our work!",
 		siteurl: "https://github.com/withastro/astro",
-		tags: ["Framework"],
+		tags: ["Docs"],
 		weight: 8,
+		enabled: true,
+	},
+	{
+		title: "他说",
+		imgurl: "https://090909.top/assets/images/logo.ico",
+		desc: "梁栋烨的博客网站。",
+		siteurl: "https://090909.top",
+		tags: ["Blog"],
+		weight: 10,
 		enabled: true,
 	},
 ];
