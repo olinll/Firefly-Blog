@@ -1,5 +1,7 @@
 {
-  "name": "firefly",
+“{”
+  "name": "Firefly",
+"名称": "Firefly",
   "compatibility_date": "2026-06-20",
   "assets": {
     "directory": "./dist"
