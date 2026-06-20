@@ -5,6 +5,6 @@
     "directory": "./dist"
   },
   "vars": {
-    "NODE_VERSION": "24"
+    "NODE_VERSION": "22"
   }
 }
