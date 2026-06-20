@@ -1,6 +1,6 @@
 ---
 title: Firefly 简单使用指南
-published: 206-06-20
+published: 2026-06-20
 pinned: true
 description: "如何使用 Firefly 博客模板。"
 image: "./cover.avif"
