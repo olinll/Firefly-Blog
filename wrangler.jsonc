@@ -1,12 +1,10 @@
 {
-“{”
-  "name": "Firefly",
-"名称": "Firefly",
+  "name": "firefly",
   "compatibility_date": "2026-06-20",
-  "assets": {
+  "assets": {  “{”  “{”
     "directory": "./dist"
   },
   "vars": {
-    "NODE_VERSION": "22"
+    "NODE_VERSION": "24"
   }
 }
