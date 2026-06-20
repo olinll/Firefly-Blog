@@ -91,16 +91,18 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "小枫_QWQ的Blog",
-		imgurl: "https://q.qlogo.cn/headimg_dl?dst_uin=1432777209&spec=640&img_type=jpg",
+		imgurl:
+			"https://q.qlogo.cn/headimg_dl?dst_uin=1432777209&spec=640&img_type=jpg",
 		desc: "欢迎来到小枫_QWQ的Blog！这是一个致力于分享前后端技术的博客。同时也分享一些闲聊碎语",
 		siteurl: "https://blog.xiaofengqwq.com",
 		tags: ["Blog"],
 		weight: 10,
 		enabled: true,
 	},
-		{
+	{
 		title: "TT清沫uk",
-		imgurl: "https://ts1.tc.mm.bing.net/th/id/OIP-C.6WsD9caLSNQFhJOi77soRAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+		imgurl:
+			"https://ts1.tc.mm.bing.net/th/id/OIP-C.6WsD9caLSNQFhJOi77soRAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
 		desc: "TT清沫ukの博客",
 		siteurl: "https://ttquk.netlify.app",
 		tags: ["Blog"],
