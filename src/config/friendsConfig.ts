@@ -50,7 +50,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
 		siteurl: "https://blog.cuteleaf.cn",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 1, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -59,7 +59,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "Firefly主题模板文档",
 		siteurl: "https://docs-firefly.cuteleaf.cn",
 		tags: ["Docs"],
-		weight: 9,
+		weight: 1,
 		enabled: true,
 	},
 	{
@@ -68,7 +68,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "The web framework for content-driven websites. ⭐️ Star to support our work!",
 		siteurl: "https://github.com/withastro/astro",
 		tags: ["Docs"],
-		weight: 8,
+		weight: 1,
 		enabled: true,
 	},
 	{
@@ -76,6 +76,15 @@ export const friendsConfig: FriendLink[] = [
 		imgurl: "https://090909.top/assets/images/logo.ico",
 		desc: "梁栋烨的博客网站。",
 		siteurl: "https://090909.top",
+		tags: ["Blog"],
+		weight: 10,
+		enabled: true,
+	},
+	{
+		title: "Hyper001’s Blog",
+		imgurl: "https://blog.hyper001.cn/images/avatar.jpeg",
+		desc: "记录学习，分享生活，保持热爱，奔赴山海。",
+		siteurl: "https://blog.hyper001.cn/",
 		tags: ["Blog"],
 		weight: 10,
 		enabled: true,
