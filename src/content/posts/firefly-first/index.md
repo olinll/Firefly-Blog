@@ -27,7 +27,7 @@ draft: false
 - [Node.js](https://nodejs.org/)：关键运行环境
 - pnpm：包管理工具，使用npm进行安装。
 - [Git](https://git-scm.cn/)：版本控制，用于拉取、提交代码。
-
+- [GitHub Desktop](https://desktop.github.com/download/) github官方客户端
 - [VS Code](https://code.visualstudio.com)：编辑器，用于修改配置、写文章。
 
 #### 安装Node.js
@@ -192,14 +192,12 @@ VS Code 左侧有一个源代码管理，在这里可以上传代码，写消息
 
 ```jsonc
 {
-  "name": "firefly",
-  "compatibility_date": "2026-06-18",
-  "assets": {
-    "directory": "./dist"
-  },
-  "vars": {
-    "NODE_VERSION": "22"
-  }
+	"name": "firefly",
+	"compatibility_date": "2025-01-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"directory": "./dist"
+	}
 }
 ```
 
