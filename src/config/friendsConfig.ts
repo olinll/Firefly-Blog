@@ -109,6 +109,15 @@ export const friendsConfig: FriendLink[] = [
 		weight: 10,
 		enabled: true,
 	},
+	{
+		title: "高新炀的小站",
+		imgurl: "https://xinyang-gao.github.io/assets/avatar.webp",
+		desc: "一个装着些稀奇古怪东西的个人小站，欢迎来逛逛~",
+		siteurl: "https://xinyang-gao.github.io",
+		tags: ["Blog"],
+		weight: 10,
+		enabled: true,
+	},
 ];
 
 // 获取启用的友链并进行排序
