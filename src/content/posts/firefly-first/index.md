@@ -11,6 +11,12 @@ draft: false
 # pinned: false                                  # 置顶
 ---
 
+<iframe width="100%" height="468"
+  src="//player.bilibili.com/player.html?bvid=BV17Njb6nEH8&p=1&autoplay=0"
+  scrolling="no" border="0" frameborder="no"
+  framespacing="0" allowfullscreen="true">
+</iframe>
+
 ## 一、前置准备
 
 你是否想拥有一个属于自己的博客，却不知道从何下手？  
