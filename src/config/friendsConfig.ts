@@ -77,7 +77,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "梁栋烨的博客网站。",
 		siteurl: "https://090909.top",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 100,
 		enabled: true,
 	},
 	{
@@ -86,7 +86,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "记录学习，分享生活，保持热爱，奔赴山海。",
 		siteurl: "https://blog.hyper001.cn",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 101,
 		enabled: true,
 	},
 	{
@@ -96,7 +96,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "欢迎来到小枫_QWQ的Blog！这是一个致力于分享前后端技术的博客。同时也分享一些闲聊碎语",
 		siteurl: "https://blog.xiaofengqwq.com",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 102,
 		enabled: true,
 	},
 	{
@@ -106,7 +106,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "TT清沫ukの博客",
 		siteurl: "https://ttquk.netlify.app",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 103,
 		enabled: true,
 	},
 	{
@@ -115,7 +115,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "一个装着些稀奇古怪东西的个人小站，欢迎来逛逛~",
 		siteurl: "https://xinyang-gao.github.io",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 104,
 		enabled: true,
 	},
 	{
@@ -124,7 +124,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "坐而言不如起而行.",
 		siteurl: "https://fqzlr.com/",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 105,
 		enabled: true,
 	},
 	{
@@ -133,19 +133,8 @@ export const friendsConfig: FriendLink[] = [
 		desc: "哈基米，南北绿豆",
 		siteurl: "https://tblog.mmzhiku.xyz",
 		tags: ["Blog"],
-		weight: 10,
+		weight: 106,
 		enabled: true,
-	},
-	{
-		title: "Hyde Blog",
-		imgurl:
-			"https://seasir.top/assets/avatar.avif",
-		desc: "人心中的成见是一座大山",
-		siteurl: "https://seasir.top/",
-		tags: ["Blog"],
-		weight: 1,
-		enabled: true,
-		source: "qq:9892214",
 	},
 ];
 
