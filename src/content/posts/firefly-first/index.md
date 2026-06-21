@@ -2,7 +2,7 @@
 title: 「适用于小白」Firefly 博客部署教程
 slug: firefly-first
 published: 2026-06-18 18:45:13
-updated: 2026-06-18 18:45:13
+updated: 2026-06-12 15:46:00
 description: 手把手带你搭建一个静态的博客网站。
 image: api
 category: 部署
