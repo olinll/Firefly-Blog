@@ -156,6 +156,17 @@ export const friendsConfig: FriendLink[] = [
 		source: "https://github.com/olinll/Firefly-Blog/issues/11",
 		qq: "3860169579",
 	},
+	{
+		title: "MineDensity",
+		imgurl: "https://www.minedensity.top/favicon.ico",
+		desc: "这个网站是我送给互联网的一本手绘笔记。如果你在这里找到了什么让你停留的东西，那我们就已经是朋友了。",
+		siteurl: "https://www.minedensity.top/",
+		tags: ["Blog"],
+		weight: 5,
+		enabled: true,
+		source: "https://github.com/olinll/Firefly-Blog/issues/9",
+		qq: "2560868231",
+	},
 ];
 
 // 获取启用的友链并进行排序
