@@ -118,6 +118,24 @@ export const friendsConfig: FriendLink[] = [
 		weight: 10,
 		enabled: true,
 	},
+	{
+		title: "番茄主理人",
+		imgurl: "https://q1.qlogo.cn/g?b=qq&nk=20447289&s=640",
+		desc: "坐而言不如起而行.",
+		siteurl: "https://fqzlr.com/",
+		tags: ["Blog"],
+		weight: 10,
+		enabled: true,
+	},
+	{
+		title: "MmzMing的知识库",
+		imgurl: "https://i.stardots.io/784774835/StarDots-2026052116374135506.jpg",
+		desc: "哈基米，南北绿豆",
+		siteurl: "https://tblog.mmzhiku.xyz",
+		tags: ["Blog"],
+		weight: 10,
+		enabled: true,
+	},
 ];
 
 // 获取启用的友链并进行排序
