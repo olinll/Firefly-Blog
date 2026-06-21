@@ -136,6 +136,17 @@ export const friendsConfig: FriendLink[] = [
 		weight: 106,
 		enabled: true,
 	},
+	{
+		title: "Hyde Blog",
+		imgurl:
+			"https://seasir.top/assets/avatar.avif",
+		desc: "人心中的成见是一座大山",
+		siteurl: "https://seasir.top/",
+		tags: ["Blog"],
+		weight: 1,
+		enabled: true,
+		source: "qq:9892214",
+	},
 ];
 
 // 获取启用的友链并进行排序
