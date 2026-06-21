@@ -318,6 +318,7 @@ export const zh_TW: Translation = {
 	[Key.generatingPoster]: "海報生成中...",
 	[Key.copied]: "已複製",
 	[Key.copyLink]: "複製連結",
+	[Key.copyShareText]: "文字分享",
 	[Key.savePoster]: "保存海報",
 	[Key.scanToRead]: "掃碼閱讀文章",
 

@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { analyticsConfig, commentConfig } from "@/config";
+import { analyticsConfig, commentConfig, siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
@@ -23,6 +23,8 @@ export interface Props {
 	pinned?: boolean;
 	password?: boolean;
 	postUrl?: string;
+	title?: string;
+	description?: string;
 }
 
 const {
@@ -39,6 +41,8 @@ const {
 	customPath,
 	pinned,
 	postUrl,
+	title,
+	description,
 } = Astro.props;
 
 const path = customPath || (id ? `/posts/${id}` : "");
@@ -204,7 +208,7 @@ const umamiApiBase =
           data-umami-api-base={umamiApiBase}
         >
           <div class="meta-icon">
-            <Icon name="material-symbols:visibility-outline-rounded" class="text-xl" />
+            <Icon is:inline name="material-symbols:visibility-outline-rounded" class="text-xl" />
           </div>
           <span class="text-50 text-sm font-medium mr-1">
             {i18n(I18nKey.pageViews)}
@@ -215,7 +219,50 @@ const umamiApiBase =
         </div>
       )
     }
+
+    <!-- 复制分享文字按钮 -->
+    {
+      !isHome && title && postUrl && (
+        <button
+          type="button"
+          class="flex items-center gap-1 cursor-pointer transition hover:text-(--primary) dark:hover:text-(--primary) group"
+          data-share-title={title}
+          data-share-description={description || ""}
+          data-share-url={`${siteConfig.site_url.replace(/\/+$/, "")}${postUrl}`}
+          data-share-site-title={siteConfig.title}
+          data-share-copied={i18n(I18nKey.copied)}
+          onclick="copyShareText(this)"
+          title={i18n(I18nKey.copyShareText)}
+        >
+          <div class="meta-icon">
+            <Icon is:inline name="material-symbols:content-copy-outline-rounded" class="text-xl" />
+          </div>
+          <span class="text-50 text-sm font-medium share-label">
+            {i18n(I18nKey.copyShareText)}
+          </span>
+        </button>
+      )
+    }
 </div>
+
+<script is:inline>
+  function copyShareText(btn) {
+    var title = btn.dataset.shareTitle;
+    var description = btn.dataset.shareDescription;
+    var url = btn.dataset.shareUrl;
+    var siteTitle = btn.dataset.shareSiteTitle;
+    var copiedText = btn.dataset.shareCopied || "已复制";
+    var text = "【" + siteTitle + "】" + title + "\n\n" + description + "\n\n" + url;
+    navigator.clipboard.writeText(text).then(function() {
+      var label = btn.querySelector(".share-label");
+      if (label) {
+        var original = label.textContent;
+        label.textContent = copiedText;
+        setTimeout(function() { label.textContent = original; }, 1500);
+      }
+    });
+  }
+</script>
 
 <script>
   // 公开 share API 两步取数 + path → views 字典批量填充。

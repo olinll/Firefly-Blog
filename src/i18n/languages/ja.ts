@@ -324,6 +324,7 @@ export const ja: Translation = {
 	[Key.generatingPoster]: "ポスター生成中...",
 	[Key.copied]: "コピーしました",
 	[Key.copyLink]: "リンクをコピー",
+	[Key.copyShareText]: "テキスト共有",
 	[Key.savePoster]: "ポスターを保存",
 	[Key.scanToRead]: "QRコードで読む",
 

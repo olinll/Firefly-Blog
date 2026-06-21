@@ -325,6 +325,7 @@ export const en: Translation = {
 	[Key.generatingPoster]: "Generating Poster...",
 	[Key.copied]: "Copied",
 	[Key.copyLink]: "Copy Link",
+	[Key.copyShareText]: "Share Text",
 	[Key.savePoster]: "Save Poster",
 	[Key.scanToRead]: "Scan to Read",
 

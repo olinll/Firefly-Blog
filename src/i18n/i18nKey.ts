@@ -313,6 +313,7 @@ enum I18nKey {
 	generatingPoster = "generatingPoster",
 	copied = "copied",
 	copyLink = "copyLink",
+	copyShareText = "copyShareText",
 	savePoster = "savePoster",
 	scanToRead = "scanToRead",
 

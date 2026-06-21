@@ -316,6 +316,7 @@ export const zh_CN: Translation = {
 	[Key.generatingPoster]: "海报生成中...",
 	[Key.copied]: "已复制",
 	[Key.copyLink]: "复制链接",
+	[Key.copyShareText]: "文字分享",
 	[Key.savePoster]: "保存海报",
 	[Key.scanToRead]: "扫码阅读文章",
 

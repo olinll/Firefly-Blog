@@ -326,6 +326,7 @@ export const ru: Translation = {
 	[Key.generatingPoster]: "Создание постера...",
 	[Key.copied]: "Скопировано",
 	[Key.copyLink]: "Копировать ссылку",
+	[Key.copyShareText]: "Текст для шера",
 	[Key.savePoster]: "Сохранить постер",
 	[Key.scanToRead]: "Сканируйте, чтобы прочитать",
 
