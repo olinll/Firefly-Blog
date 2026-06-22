@@ -3,11 +3,11 @@ title: 博客更新日记
 slug: astro-todo
 published: 2026-06-22 08:39:04
 updated: 2026-06-22 08:39:04
-description: 关于 博客更新日记 的笔记
+description: 博客最重要的是能看，难道不是吗？
 image: api
 category: 技术
 tags: [astro]
-draft: true
+draft: false
 # pinned: false                                  # 置顶
 
 ---
