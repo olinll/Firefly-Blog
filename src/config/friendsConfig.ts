@@ -158,7 +158,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "MineDensity",
-		imgurl: "https://www.minedensity.top/favicon.ico",
+		imgurl: "https://www.minedensity.top/favicon.svg",
 		desc: "这个网站是我送给互联网的一本手绘笔记。如果你在这里找到了什么让你停留的东西，那我们就已经是朋友了。",
 		siteurl: "https://www.minedensity.top/",
 		tags: ["Blog"],
