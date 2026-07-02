@@ -21,6 +21,7 @@ export const redirectsConfig: Record<string, string> = {
 	// "/github/": "https://github.com/olinll",
 	// "/short-url/": "https://example.com/very/long/path/",
 	"/f": "/friends/",
+	"/link": "/friends/",
 	"/avatar-qlogo": "https://q2.qlogo.cn/headimg_dl?dst_uin=9892214&spec=0",
 };
 

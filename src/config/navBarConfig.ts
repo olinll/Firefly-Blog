@@ -49,7 +49,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// LinkPresets.Gallery,
 
 			// 追番
-			LinkPresets.Anime,
+			// LinkPresets.Anime,
 
 			// 番组计划
 			// LinkPresets.Bangumi,
