@@ -125,15 +125,15 @@ const shareApiBase =
                 data-share-api-base={shareApiBase}
                 data-label-error={i18n(I18nKey.pageViewsError)}
             >
-                <div class="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50 text-xs transition">
-                    <Icon name="material-symbols:group-outline" class="text-(--primary) text-base" />
-                    <span class="font-bold text-neutral-900 dark:text-neutral-100" data-profile-visitors>—</span>
-                    <span class="text-neutral-500 dark:text-neutral-400">{i18n(I18nKey.pageVisitors)}</span>
+                <div class="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50 text-xs transition min-w-0">
+                    <Icon name="material-symbols:group-outline" class="text-(--primary) text-base shrink-0" />
+                    <span class="font-bold text-neutral-900 dark:text-neutral-100 whitespace-nowrap" data-profile-visitors>—</span>
+                    <span class="text-neutral-500 dark:text-neutral-400 whitespace-nowrap">{i18n(I18nKey.pageVisitors)}</span>
                 </div>
-                <div class="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50 text-xs transition">
-                    <Icon name="material-symbols:visibility-outline" class="text-(--primary) text-base" />
-                    <span class="font-bold text-neutral-900 dark:text-neutral-100" data-profile-pageviews>—</span>
-                    <span class="text-neutral-500 dark:text-neutral-400">{i18n(I18nKey.pageViews)}</span>
+                <div class="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/50 text-xs transition min-w-0">
+                    <Icon name="material-symbols:visibility-outline" class="text-(--primary) text-base shrink-0" />
+                    <span class="font-bold text-neutral-900 dark:text-neutral-100 whitespace-nowrap" data-profile-pageviews>—</span>
+                    <span class="text-neutral-500 dark:text-neutral-400 whitespace-nowrap">{i18n(I18nKey.pageViews)}</span>
                 </div>
             </div>
         )}

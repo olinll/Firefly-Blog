@@ -41,6 +41,9 @@ const { class: className, style } = Astro.props;
 </div>
 
 <script is:inline>
+  // IIFE 包裹：避免 const/let 暴露到全局脚本作用域，
+  // 防止 Swup 在 SPA 切换时重新执行脚本触发 "Identifier has already been declared"。
+  (() => {
   const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   if (!window.timeGreetingImage) {
@@ -131,4 +134,5 @@ const { class: className, style } = Astro.props;
   document.addEventListener("swup:contentReplaced", () => {
     updateTimeGreeting();
   });
+  })();
 </script>

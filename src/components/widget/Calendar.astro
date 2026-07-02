@@ -122,6 +122,9 @@ const postUrlPrefix = url("/posts/");
 </WidgetLayout>
 
 <script is:inline data-swup-ignore-script define:vars={{ monthNames, weekDays, yearText, currentLang, calendarDataUrl, postUrlPrefix, heatmapWeekTemplate }}>
+  // IIFE 包裹：避免 const/let 暴露到全局脚本作用域，
+  // 防止 Swup 在 SPA 切换时重新执行脚本触发 "Identifier has already been declared"。
+  (() => {
   // State variables
   let displayYear = new Date().getFullYear();
   let displayMonth = new Date().getMonth();
@@ -611,6 +614,7 @@ const postUrlPrefix = url("/posts/");
   document.addEventListener("swup:contentReplaced", () => {
     setTimeout(initCalendar, 100);
   });
+  })();
 </script>
 
 <style>

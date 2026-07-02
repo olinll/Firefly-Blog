@@ -2,6 +2,7 @@
 import { getEntry, render } from "astro:content";
 import Comment from "@components/comment/index.astro";
 import Markdown from "@components/common/Markdown.astro";
+import FriendRulesModal from "@components/features/FriendRulesModal.astro";
 import { Icon } from "astro-icon/components";
 import {
 	commentConfig,
@@ -49,15 +50,33 @@ const description =
     <div class="card-base z-10 px-9 py-6 relative w-full">
       <!-- 页面标题和描述 -->
       <div class="mb-4">
-        <div class="flex items-center gap-3 mb-3">
-          <div
-            class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70"
-          >
-            <Icon is:inline name="material-symbols:group" class="text-[1.5rem]" />
+        <div class="flex items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-3">
+            <div
+              class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70"
+            >
+              <Icon is:inline name="material-symbols:group" class="text-[1.5rem]" />
+            </div>
+            <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+              {title}
+            </div>
           </div>
-          <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-            {title}
-          </div>
+          {
+            friendsPageConfig.applyLink && (
+              <button
+                type="button"
+                data-open-friend-rules
+                class="shrink-0 px-3.5 py-2 rounded-xl border border-(--line-divider) hover:border-(--primary) hover:bg-(--card-bg) text-sm font-medium text-neutral-700 dark:text-neutral-200 transition-colors duration-200 cursor-pointer flex items-center gap-1.5"
+              >
+                <Icon
+                  is:inline
+                  name="material-symbols:help-outline"
+                  class="text-base text-(--primary)"
+                />
+                如何申请友链
+              </button>
+            )
+          }
         </div>
         {
           description && (
@@ -194,6 +213,8 @@ const description =
       <Comment post={friendsPost} customPath="/friends/" />
     </div>
   )}
+
+  <FriendRulesModal />
 
   <script slot="head" is:inline>
     if (!customElements.get("friend-filter")) {
